@@ -12034,7 +12034,7 @@ This feature could possibly affect and be affected by the LSTAT. As LSTAT increa
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Calculate the performance of this model</span>
@@ -12069,6 +12069,7 @@ Model has a coefficient of determination, R^2, of 0.923.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
 Model has a coefficient of determination, R^2, of 0.923.</p>
+<p>The model has an r-squared value of 0.923, which implies that 92.3% of the variation in the dependent variable can be explained by the independent variable. So, when the model makes predictions, it is approximately 92% accurate. This is a pretty high accuracy and so we can conclude that the model successfully captures the variation in the target variable</p>
 
 </div>
 </div>
@@ -12142,7 +12143,7 @@ Model has a coefficient of determination, R^2, of 0.923.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-Splitting the data into a training set and testing set provides us with a set of data that the model hasn't seen to test. This allows us to gauge how accurate the model will be when making predictions on data that it hasn't seen before. 
+Splitting the data into a training set and testing set provides us with a set of data that the model hasn't seen before to test the performance on. This allows us to gauge how accurate the model will be when making predictions on data that it hasn't seen before. 
 If we used the same data for both training and testing, we could over-fit the model on the data and it might give us really high accuracy. But then when we start using it make predictions on new data, we will find that it's predictions are not accurate. 
 So, it's important to have test data that we can gauge the model's accuracy with.</p>
 
@@ -13836,7 +13837,7 @@ JEmSJA3N/wFRJ+0t3fLjHQAAAABJRU5ErkJggg==
 I have chosen the graph with <em>max_depth = 3</em>.</p>
 <p>As more training points are added, score on the training data reduces from almost a certainty (1) to something less certain, but still pretty good (0.8)</p>
 <p>For the testing set, the curve moves in the opposite direction. When there were few data points, the model performed poorly on the test data. As the number of data points increased, the model performed better.</p>
-<p>The training curve and the testing curve converge in the at around 0.8 for a model with max_depth = 3 when the size ofthe data set increases. At this max_depth, the model certainly benefits from adding more data points.</p>
+<p>The training curve and the testing curve converge in the at around 0.8 for a model with max_depth = 3 when the size of the dataset increases. At this max_depth, the model certainly benefits from adding more data points.</p>
 
 </div>
 </div>
@@ -14563,7 +14564,7 @@ c7JmZmZmVmL/Az1eug5kt5/ZAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>When the model is trained on a maximum depth of 1, it suffers from <em>High Bias</em>. We can tell that because both the training set and the test set scores are low. It is indicative of under-fitting. The model is incapable of learning the complexity of the data to make predictions.</p>
-<p>When the model is tained on a maximum depth of 10, it suffers from <em>High Variance</em>. We can tell that because the training set score is almost 1. But the test set score is much lower ~ 0.65. So, the model is too complex and sensitive to variation in the training set, but not good at predicting when it faced with data it hasn't seen before. It is indicative of over-fitting.</p>
+<p>When the model is tained on a maximum depth of 10, it suffers from <em>High Variance</em>. We can tell that because the training set score is almost 1. But the test set score is much lower ~ 0.65. So, the model is too complex and sensitive to variation in the training set, but not good at predicting when it is presented with data it hasn't seen before. It is indicative of over-fitting.</p>
 
 </div>
 </div>
@@ -14584,7 +14585,7 @@ c7JmZmZmVmL/Az1eug5kt5/ZAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-A maximum depth of 3 with yield a model that generalizes best on unseen data. 
+A maximum depth of 3 will yield a model that generalizes best on unseen data. 
 From the complexity graph, we can see that the training and test scores are almost the same at a maximum depth of 3, and it is fairly high score of approximately 0.8. The test score decreases on either side of 3. So, the model generalizes best at maximum depth of 3.</p>
 
 </div>
@@ -14641,6 +14642,7 @@ Grid Search technique is a way to tune the parameters of a learning algorithm. I
 <p><strong>Answer: </strong></p>
 <p>K-Fold cross-validation training technique is an iterative improvement on the train test split technique. With train test split, the data is split only once. So, we have a defined set of training data and test data based on how much of the data we are willing to set aside for testing. This means that we lose a certain amount of data. The model might miss learning from the remaining data set.</p>
 <p>With K-Fold cross-validation, the train test split is done K times on the data set, each time picking a different subset of the data to be set aside as the test data set. The dataset is divided into K subsets of equal size. In each iteration, it is trained on K-1 datasets with the remaining 1 dataset used for validation. This means that the model is trained on the entire data set, while also being cross-validated. The final model is an aggregate of the each iteration of training.</p>
+<p>Using K-Fold to split the data for GridSearch algorithm provides it with K-1 training datasets and 1 testing dataset, which is cycled through the all the data. This allows GridSearch algorithm to validate the model with different parameters, making the model more robust.</p>
 <p>In larger datasets, K-fold is used along with train-test split. Initially, a subset of data is set aside for testing. The remaining training dataset is then run through K-fold split, which does K iterations of the model fitting with cross-validation. This model is then tested on with initial test data that was set aside. This prevents "data leak" from occuring between the test, validation and training dataset. This prevents overfitting on validation data.</p>
 
 </div>
@@ -14876,6 +14878,8 @@ Parameter &#39;max_depth&#39; is 4 for the optimal model.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
 Parameter 'max_depth' is 4 for the optimal model.</p>
+<p>The max-depth I previously picked from the complexity graph was 3. It is comparable to the value GridSearchCV picked out.</p>
+<p>However, it differs in one important aspect - at max_depth=3, the scores for training data and validation data almost converge. The difference between them is minimal. The max_depth = 4 picked out by GridSearchCV presents a solution with a much higher training score and the same validation score. Since the difference beween the 2 scores is greater at max_depth = 4, I fear that the model is overfit.</p>
 
 </div>
 </div>
