@@ -14639,8 +14639,9 @@ Grid Search technique is a way to tune the parameters of a learning algorithm. I
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>K-Fold cross-validation training technique is an iterative improvement on the train test split technique. With train test split, the data is split only once. So, we have a defined set of training data and test data based on how much of the data we are willing to set aside for testing. This means that we lose a certain amount of data. The model might miss learning from the remaining data set. 
-With K-Fold cross-validation, the train test split is done K times on the data set, each time picking a different subset of the data to be set aside as the test data set. This means that the model is trained on the entire data set, while also being cross-validated. The final model is an aggregate of the each iteration of training.</p>
+<p>K-Fold cross-validation training technique is an iterative improvement on the train test split technique. With train test split, the data is split only once. So, we have a defined set of training data and test data based on how much of the data we are willing to set aside for testing. This means that we lose a certain amount of data. The model might miss learning from the remaining data set.</p>
+<p>With K-Fold cross-validation, the train test split is done K times on the data set, each time picking a different subset of the data to be set aside as the test data set. The dataset is divided into K subsets of equal size. In each iteration, it is trained on K-1 datasets with the remaining 1 dataset used for validation. This means that the model is trained on the entire data set, while also being cross-validated. The final model is an aggregate of the each iteration of training.</p>
+<p>In larger datasets, K-fold is used along with train-test split. Initially, a subset of data is set aside for testing. The remaining training dataset is then run through K-fold split, which does K iterations of the model fitting with cross-validation. This model is then tested on with initial test data that was set aside. This prevents "data leak" from occuring between the test, validation and training dataset. This prevents overfitting on validation data.</p>
 
 </div>
 </div>
